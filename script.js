@@ -1,34 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
   const toggleSwitch = document.getElementById('toggle-notice');
-  const savedState = localStorage.getItem('toggleState'); 
-  if (savedState !== null) {
-    const isChecked = JSON.parse(savedState); 
-    toggleSwitch.checked = isChecked; 
-  }
 
-  if (toggleSwitch) {
-    toggleSwitch.addEventListener('change', function () {
-      const isChecked = this.checked;
+  chrome.storage.local.get('toggleState', (result) => {
+    const isChecked = result.toggleState || false; 
+    toggleSwitch.checked = isChecked;
+  });
 
-      localStorage.setItem('toggleState', JSON.stringify(isChecked)); 
+  toggleSwitch.addEventListener('change', function () {
+    const isChecked = this.checked;
 
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const activeTab = tabs[0];
-        if (!activeTab) {
-          console.error('No active tab found.');
-          return;
-        }
+    chrome.storage.local.set({ toggleState: isChecked }, () => {
+      console.log(`Global toggle state updated to: ${isChecked}`);
 
-        chrome.tabs.sendMessage(activeTab.id, { action: 'toggleVisibility', isVisible: isChecked }, (response) => {
-          if (chrome.runtime.lastError) {
-            console.error('Error sending message:', chrome.runtime.lastError.message);
-          } else {
-            console.log('Content script responded:', response);
-          }
+      chrome.tabs.query({}, (tabs) => {
+        tabs.forEach((tab) => {
+          chrome.tabs.sendMessage(tab.id, { action: 'toggleVisibility', isVisible: isChecked });
         });
       });
     });
-  } else {
-    console.error('Toggle switch not found.');
-  }
+  });
 });
