@@ -1,13 +1,12 @@
-// Listen for messages from the background script or popup
+// Listen for messages from the background or popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'toggleVisibility') {
       const { isVisible } = message;
   
-      localStorage.setItem('toggleState', JSON.stringify(isVisible));
-  
+      // Get all elements with the class name 'search-and-buttons-wrapper'
       const searchSections = document.getElementsByClassName('search-and-buttons-wrapper');
   
-      // Toggle visibility based on the toggle state
+      // Toggle visibility based on the global state
       Array.from(searchSections).forEach((section) => {
         section.style.display = isVisible ? 'flex' : 'none';
       });
@@ -17,16 +16,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   });
   
-  chrome.storage.local.get('toggleState', (result) => {
-    const isVisible = result.toggleState || false; 
+  chrome.storage.sync.get('toggleState', (data) => {
+    const isVisible = data.toggleState || false;
     const searchSections = document.getElementsByClassName('search-and-buttons-wrapper');
-
     Array.from(searchSections).forEach((section) => {
       section.style.display = isVisible ? 'flex' : 'none';
     });
   
     console.log(`Initial state applied: ${isVisible ? 'visible' : 'hidden'}`);
   });
+
   
 function loadLibraryFromLocal(filePath) {
     return new Promise((resolve, reject) => {
