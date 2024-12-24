@@ -64,8 +64,8 @@ A lightweight Chrome extension that enhances your browsing experience by adding 
 
 ## Support
 
-- **Issues & Bugs**: [GitHub Issues](https://github.com/your-repo/issues)
-- **Feature Requests**: [Create New Issue](https://github.com/your-repo/issues/new)
+- **Issues & Bugs**: [GitHub Issues](https://github.com/Bibashsitoula0/Table-Data-Export-Search-Extension/issues)
+- **Feature Requests**: [Create New Issue](https://github.com/Bibashsitoula0/Table-Data-Export-Search-Extension/issues/new)
 - **Email Support**: Available through Chrome Web Store listing
 
 ## Contributing
@@ -92,4 +92,4 @@ MIT License - See [LICENSE](https://github.com/your-repo/graphs/contributors) fi
 
 - **Icons**: Custom SVG designs
 - **Author**: Chandan Bhagat
-- **Contributors**: See [GitHub contributors page](https://github.com/your-repo/graphs/contributors)
+- **Contributors**: See [GitHub contributors page](https://github.com/Bibashsitoula0/Table-Data-Export-Search-Extension/graphs/contributors)
