@@ -1,17 +1,8 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    debugger;
     if (message.action === 'toggleVisibility') {
       const { isVisible } = message;
-  
-      debugger;
-
-      // Save the state to localStorage
       localStorage.setItem('toggleState', JSON.stringify(isVisible)); 
-  
-      // Get all elements with the class name 'search-and-buttons-wrapper'
       const searchSections = document.getElementsByClassName('search-and-buttons-wrapper');
-  
-      // Toggle visibility based on the toggle state
       Array.from(searchSections).forEach((section) => {
         section.style.display = isVisible ? 'flex' : 'none';
       });
@@ -21,11 +12,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   });
   
-
-
-
-// Utility function to load a library dynamically from local files
-
 function loadLibraryFromLocal(filePath) {
     return new Promise((resolve, reject) => {
         const script = document.createElement("script");
