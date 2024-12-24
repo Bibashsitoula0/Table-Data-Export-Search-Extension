@@ -1,0 +1,42 @@
+{
+  "name": "Export Table Data",
+  "version": "1.0",
+  "manifest_version": 3,
+  "author": "Bibash Sitoula",
+  "description": "Enable seamless export of table data to Excel, PDF, DOCX, CSV, or clipboard directly from any webpage. Includes advanced search functionality.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/xlsx.full.min.js","lib/html2canvas.js","lib/jspdf.js","lib/docx.js","lib/font-awesome.js", "contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"    
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/tableDataExport.png",
+    "48": "images/tableDataExport.png",
+    "128": "images/tableDataExport.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "clipboardWrite"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/xlsx.full.min.js", "lib/html2canvas.js","lib/jspdf.js","lib/docx.js","lib/font-awesome.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
+

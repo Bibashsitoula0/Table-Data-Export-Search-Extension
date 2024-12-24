@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Section with Toggle</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: left;
+    }
+
+    .toggle-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .slider:before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-color: #fff;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: 0.3s;
+    }
+
+    .toggle-switch input:checked + .slider {
+      background-color: #007BFF;
+    }
+
+    .toggle-switch input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    .notice-section {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.8;
+      transition: 0.3s ease-in-out;
+    }
+
+    .notice-section .line {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .notice-section .icon {
+      font-size: 14px;
+      color: #007BFF;
+      margin-right: 8px;
+    }
+
+    .notice-section a {
+      color: #007BFF;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+
+    .notice-section a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+
+    .author {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 11px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toggle-group">
+      <span>Show options</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-notice">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="notice-section" id="notice-section">
+      <div class="line">
+        <span class="icon">🔒</span>
+        <span>Data Privacy: All operations are performed locally on your device.</span>
+      </div>
+      <hr>
+      <div class="line">
+        <span class="icon">⚠️</span>
+        <span>Found an issue?</span>
+        <a href="https://github.com" target="_blank">Create an issue on GitHub</a>.
+      </div>
+    </div>
+    <p class="author">Developed by: Bibash Sitoula</p>
+  </div>
+
+  <script src="script.js"></script>
+ 
+</body>
+</html>

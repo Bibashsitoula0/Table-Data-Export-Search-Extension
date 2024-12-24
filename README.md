@@ -86,7 +86,7 @@ A lightweight Chrome extension that enhances your browsing experience by adding 
 
 ## License
 
-MIT License - See [LICENSE](https://github.com/Bibashsitoula0/Table-Data-Export-Search-Extension/blob/main/LICENSE) file
+MIT License - See [LICENSE](https://github.com/your-repo/graphs/contributors) file
 
 ## Credits
 
